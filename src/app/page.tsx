@@ -3,7 +3,6 @@ import { useReducer } from "react";
 interface State {
     count: number
 }
-
 type CounterAction = 
     | {type: "reset"}
     | {type: "setCount"; value: State["count"]}

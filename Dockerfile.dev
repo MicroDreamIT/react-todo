@@ -1,0 +1,21 @@
+# Use Node.js official image
+FROM node:20-alpine
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Install additional dependencies for TurboPack (if required)
+RUN npm install --save-dev turbo
+
+# Copy all project files into the container
+COPY . .
+
+# Expose the development port
+EXPOSE 3000
+
+# Start the Next.js development server with Turbopack
+CMD ["npm", "run", "dev", "--", "--turbopack"]
